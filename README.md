@@ -4,7 +4,7 @@
 This proof made public for the reader to make up their own minds as to the origin of Bitcoin.  
 The Excel Sheet provides the calculations for the method and its final result.  
 The proof will not be properly understood with out understanding why we are doing the things we are doing.  
-Start with the explinnation and move to the excel sheet when you feel like you need a better idea of how the final message decode is working.  
+Start with the explanation and move to the excel sheet when you feel like you need a better idea of how the final message decode is working.  
 
 Things to do:  
 Create markdown version of text so people can submit pull requests.
