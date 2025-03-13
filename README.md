@@ -6,8 +6,8 @@ The Excel Sheet provides the calculations for the method and its final result.
 The proof will not be properly understood with out understanding why we are doing the things we are doing.  
 Start with the explanation and move to the excel sheet when you feel like you need a better idea of how the final message decode is working.  
 
-Things to do:  
-Create markdown version of text so people can submit pull requests.
+There is a markdown version for lighter reading, but I haven't formatted it all correctly yet.  
+If you spot typos, errors steg or not, please make a pull request so I can fix it for EditionV1.1
 
 The files included:  
  1. PDF/DOCX: Bitcoin-ss Whale_ Steganalysis of the Bitcoin WhitePaper  
