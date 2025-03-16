@@ -108,7 +108,7 @@ number-of emperors and a “humanist” published a 3-part book titled
 “Steganographia”. The first 2 books were relatively unremarkable
 although highly coveted cryptography books, however, book 3 was quite
 the deviation. This was what appeared to be a spell book of occult
-magic. Written in Latin the Roman Catholic Church quickly band it. Its
+magic. Written in Latin the Roman Catholic Church quickly banned it. Its
 title is Greek, ‘Stega’ meaning covered ‘o-graphia’ meaning writing.
 Fitting that the author would title a book on hidden writings in a
 language that it is not written in. Also, fitting that the third book in
@@ -2296,7 +2296,7 @@ system they may oversee will not conform to this paragraph of the paper.
 It is quite well established in the Bitcoin zeitgeist that the number of
 coins is fixed, at least it was at the start. It isn’t clear what other
 “features” and “capabilities” may be added, but their plan is to
-“ossify” at some point If you are reading this then are learning.
+“ossify” at some point
 
 # Hashing it out, – in public
 
@@ -3765,7 +3765,7 @@ Wilson, Qrious, Vince LaBido, The Enchanted Prince, Gavin Mhel, Spot,
 Cameron J. Gray, Grumpyoldman, ACE, Scott, r cunn, Stephan Morgan,
 Samuel Wilson, senortoshi, Joseph, Olivers Wilde, Olivers Wilde, Will
 Townsend, Amy Voluntary, Genius4Hire, Michael Needham, oudekaas,
-BeardPappa, Matt Welsh, Gal Buki, Mark Piters, Stegosaurus**
+BeardPappa, Matt Welsh, Mark Piters, Stegosaurus**
 
 To support me in works like this and many other things the best way to
 do is by subscribing to the Investigation7 Patreon page, if you just
@@ -3931,7 +3931,7 @@ Comma is a round start -\> New round remove summation filters
 
 “Dropped messages” } -\> at least 1 letter is not correct
 
-“Realises it missed one”. }
+“Realizes it missed one”. }
 
 **Applied Result and method:**
 
