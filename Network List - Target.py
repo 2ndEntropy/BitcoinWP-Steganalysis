@@ -103,10 +103,11 @@ def generate_targeted_rules(target_name, text):
     swap_to = random.choice(list((target_letters & text_letters) - set(reintroduced_letters)))
     return letters_to_remove, reintroduced_letters, swap_from, swap_to
 
-def generate_unique_names_until_target(lines, target_name, text, max_attempts=250000):
+def generate_unique_names_until_target(lines, target_name, text, max_attempts=1000000):
     used_rules = set()
     reset_line_index = len(lines) - 3  # 3rd line from the bottom
     closest_matches = []
+    top_10_intermediate = []
 
     attempts = 0
     while attempts < max_attempts:
@@ -123,32 +124,49 @@ def generate_unique_names_until_target(lines, target_name, text, max_attempts=25
         
         distance = sum(1 for a, b in zip(inline_characters, target_name) if a != b) + abs(len(inline_characters) - len(target_name))
         match_percentage = ((len(target_name) - distance) / len(target_name)) * 100
-        
+
+        if match_percentage == 100:
+            print(f"\n100% match found after {attempts} attempts:")
+            print(f"Name: {inline_characters}, Letters removed: {letters_to_remove_part1}, Reintroduced letters: {', '.join(reintroduced_letters)}, Swapped: {swap_from} -> {swap_to}")
+            return [(inline_characters, letters_to_remove_part1, reintroduced_letters, swap_from, swap_to, match_percentage)]
+
+        if attempts % 10000 == 0 and attempts > 0:
+            top_10_intermediate = sorted(closest_matches, key=lambda x: x[5], reverse=True)[:10]
+            print(f"\nTarget: {target_name}")
+            print(f"Top 10 matches after {attempts} attempts:")
+            for i, found_name in enumerate(top_10_intermediate, 1):
+                name, letters_removed, reintroduced, swap_from, swap_to, match_percentage = found_name
+                print(f"{i}. Name: {name}, Letters removed: {letters_removed}, Reintroduced letters: {', '.join(reintroduced)}, Swapped: {swap_from} -> {swap_to}, Match: {match_percentage:.2f}%")
+            
+            closest_matches = []
+
         closest_matches.append((inline_characters, letters_to_remove_part1, reintroduced_letters, swap_from, swap_to, match_percentage))
         closest_matches = sorted(closest_matches, key=lambda x: x[5], reverse=True)[:100]
 
-        if inline_characters == target_name:
-            return closest_matches
-
         attempts += 1
 
-    return closest_matches
+    return closest_matches, top_10_intermediate
 
-def print_summary(standard_name, found_names):
-    print("Standard name:")
+def print_summary(standard_name, found_names, top_10_intermediate):
+    print("\nStandard name:")
     name, letters_removed, reintroduced, swap_from, swap_to = standard_name
-    print(f"Name: {name}, Letters removed: {letters_removed}, Reintroduced letters: {', '.join(reintroduced)}, Swapped: {swap_from} -> {swap_to}")
+    print(f"Name: {name}\nLetters removed: {letters_removed}\nReintroduced letters: {', '.join(reintroduced)}\nSwapped: {swap_from} -> {swap_to}")
 
     if found_names:
-        print("\nTop 100 matches:")
-        for i, found_name in enumerate(found_names, 1):
+        print("\nTop 10 matches:")
+        for i, found_name in enumerate(found_names[:10], 1):
             name, letters_removed, reintroduced, swap_from, swap_to, match_percentage = found_name
-            print(f"{i}. Name: {name}, Letters removed: {letters_removed}, Reintroduced letters: {', '.join(reintroduced)}, Swapped: {swap_from} -> {swap_to}, Match: {match_percentage:.2f}%")
+            print(f"{i}. Name: {name}\n   Letters removed: {letters_removed}\n   Reintroduced letters: {', '.join(reintroduced)}\n   Swapped: {swap_from} -> {swap_to}\n   Match: {match_percentage:.2f}%")
     else:
         print("\nNo matches found.")
 
 if __name__ == "__main__":
     import sys
+
+    # Inform the user about the program and how to terminate it early
+    print("\nThis program attempts to generate a target 9-character string by iterating through different rules and combinations.")
+    print("The program will run up to 1,000,000 attempts unless it finds a 100% match.")
+    print("You can terminate the program early by pressing 'Ctrl+C'.")
 
     if len(sys.argv) < 2:
         target_name = input("Enter a 9-character target string: ").strip()
@@ -172,5 +190,5 @@ using the hash of the accepted block as the previous hash"""
     lines = text.split("\n")
     standard_name = generate_standard_name(lines)
     print("Standard name generated:", standard_name[0])
-    found_names = generate_unique_names_until_target(lines, target_name, text)
-    print_summary(standard_name, found_names)
+    found_names, top_10_intermediate = generate_unique_names_until_target(lines, target_name, text)
+    print_summary(standard_name, found_names, top_10_intermediate)
