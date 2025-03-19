@@ -2,7 +2,9 @@
 ## Technical decode of the Bitcoin whitepaper using steganography text and formatting error analysis.
 
 This proof made public for the reader to make up their own minds as to the origin of Bitcoin.  
-The Excel Sheet provides the calculations for the method and its final result.  
+The Excel Sheet provides the calculations for the method and its final result.
+The python code shows the result with the correct rules as instructed.
+The other python code asks the user for a string and then attempts 10,000,000 times to try to acheive it based upon the differences in target and text.
 The proof will not be properly understood with out understanding why we are doing the things we are doing.  
 Start with the explanation and move to the excel sheet when you feel like you need a better idea of how the final message decode is working.  
 
